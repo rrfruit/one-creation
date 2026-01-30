@@ -1,0 +1,353 @@
+{
+  "version": "2.6",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "login",
+      "clip": true,
+      "width": 400,
+      "fill": "#FFFFFF",
+      "cornerRadius": 8,
+      "effect": {
+        "type": "shadow",
+        "shadowType": "outer",
+        "color": "#00000010",
+        "offset": {
+          "x": 0,
+          "y": 4
+        },
+        "blur": 24
+      },
+      "layout": "vertical",
+      "gap": 32,
+      "padding": [
+        48,
+        40
+      ],
+      "justifyContent": "center",
+      "alignItems": "center",
+      "children": [
+        {
+          "type": "text",
+          "id": "4uLda",
+          "name": "title",
+          "fill": "#0A0A0A",
+          "content": "欢迎回来",
+          "fontFamily": "Outfit",
+          "fontSize": 32,
+          "fontWeight": "600",
+          "letterSpacing": -0.5
+        },
+        {
+          "type": "text",
+          "id": "AAHr6",
+          "name": "subtitle",
+          "fill": "#666666",
+          "content": "登录您的账户以继续",
+          "fontFamily": "Outfit",
+          "fontSize": 14,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "wV0YE",
+          "name": "formContainer",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "children": [
+            {
+              "type": "text",
+              "id": "zRJqS",
+              "name": "emailLabel",
+              "fill": "#333333",
+              "content": "邮箱",
+              "fontFamily": "Outfit",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "9xsYV",
+              "name": "emailInput",
+              "width": "fill_container",
+              "height": 48,
+              "fill": "#FFFFFF",
+              "cornerRadius": 6,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#E5E5E5"
+              },
+              "padding": [
+                0,
+                16
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "Trq3k",
+                  "name": "emailPlaceholder",
+                  "fill": "#999999",
+                  "content": "your@email.com",
+                  "textAlign": "center",
+                  "textAlignVertical": "middle",
+                  "fontFamily": "Outfit",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "rectangle",
+              "id": "02pVC",
+              "name": "divider1",
+              "fill": "#E5E5E5",
+              "width": "fill_container",
+              "height": 1
+            },
+            {
+              "type": "frame",
+              "id": "UrB8o",
+              "name": "orText",
+              "width": "fill_container",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "I4q5i",
+                  "name": "line1",
+                  "fill": "#E5E5E5",
+                  "width": "fill_container",
+                  "height": 1
+                },
+                {
+                  "type": "text",
+                  "id": "FOztn",
+                  "name": "orLabel",
+                  "fill": "#999999",
+                  "content": "或",
+                  "fontFamily": "Outfit",
+                  "fontSize": 12,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "rectangle",
+                  "id": "uBHGz",
+                  "name": "line2",
+                  "fill": "#E5E5E5",
+                  "width": "fill_container",
+                  "height": 1
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xwZt5",
+              "name": "socialButtons",
+              "width": "fill_container",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "rHBb3",
+                  "name": "googleBtn",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E5E5E5"
+                  },
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "Ny67S",
+                      "name": "googleIcon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "mail",
+                      "iconFontFamily": "lucide",
+                      "fill": "#666666"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Q0JFL",
+                      "name": "googleText",
+                      "fill": "#333333",
+                      "content": "Google",
+                      "fontFamily": "Outfit",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "pxis9",
+                  "name": "githubBtn",
+                  "width": "fill_container",
+                  "height": 44,
+                  "fill": "#FFFFFF",
+                  "cornerRadius": 6,
+                  "stroke": {
+                    "thickness": 1,
+                    "fill": "#E5E5E5"
+                  },
+                  "gap": 8,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "m4aDr",
+                      "name": "githubIcon",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "github",
+                      "iconFontFamily": "lucide",
+                      "fill": "#666666"
+                    },
+                    {
+                      "type": "text",
+                      "id": "96bdD",
+                      "name": "githubText",
+                      "fill": "#333333",
+                      "content": "GitHub",
+                      "fontFamily": "Outfit",
+                      "fontSize": 13,
+                      "fontWeight": "500"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "cnWCR",
+              "name": "passwordLabel",
+              "fill": "#333333",
+              "content": "密码",
+              "fontFamily": "Outfit",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "LtmME",
+              "name": "passwordInput",
+              "width": "fill_container",
+              "height": 48,
+              "fill": "#FFFFFF",
+              "cornerRadius": 6,
+              "stroke": {
+                "thickness": 1,
+                "fill": "#E5E5E5"
+              },
+              "padding": [
+                0,
+                16
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ZOLCz",
+                  "name": "passwordPlaceholder",
+                  "fill": "#999999",
+                  "content": "••••••••",
+                  "fontFamily": "Outfit",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "id": "GgaC6",
+              "name": "forgotLink",
+              "fill": "#6B2D3C",
+              "content": "忘记密码？",
+              "fontFamily": "Outfit",
+              "fontSize": 13,
+              "fontWeight": "500"
+            },
+            {
+              "type": "frame",
+              "id": "uzJXp",
+              "name": "loginButton",
+              "width": "fill_container",
+              "height": 48,
+              "fill": "#0A0A0A",
+              "cornerRadius": 6,
+              "padding": [
+                0,
+                24
+              ],
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "TwlgR",
+                  "name": "loginButtonText",
+                  "fill": "#FFFFFF",
+                  "content": "登录",
+                  "fontFamily": "Outfit",
+                  "fontSize": 14,
+                  "fontWeight": "500"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ZwFOD",
+          "name": "signupContainer",
+          "gap": 8,
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "cBbdp",
+              "name": "signupText",
+              "fill": "#666666",
+              "content": "还没有账户？",
+              "fontFamily": "Outfit",
+              "fontSize": 13,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "1xHo8",
+              "name": "signupLink",
+              "fill": "#6B2D3C",
+              "content": "立即注册",
+              "fontFamily": "Outfit",
+              "fontSize": 13,
+              "fontWeight": "500"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "id": "K3bWY",
+      "x": 0,
+      "y": -267,
+      "model": "claude-4.5-sonnet",
+      "width": 250,
+      "height": 219,
+      "content": "在 \"login\" Frame 里 设计一个登录页"
+    }
+  ]
+}
