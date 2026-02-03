@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  id        String     @id @default(cuid())
+  clerkId   String?    @unique
+  email     String?    @unique
+  nickname  String?
+  imageUrl  String?
+  status    UserStatus @default(ACTIVE)
+  role      UserRole   @default(USER)
+  credits   Int        @default(0)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  runs    WorkflowRun[]
+  ledgers CreditLedger[]
+  orders  RechargeOrder[]
+}
+
+model Workflow {
+  id          Int            @id @default(autoincrement())
+  name        String
+  description String?
+  coverUrl    String?
+  creditCost  Int
+  sortOrder   Int            @default(0)
+  status      WorkflowStatus @default(ACTIVE)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  runs WorkflowRun[]
+
+  @@unique([name])
+}
+
+model WorkflowRun {
+  id              Int       @id @default(autoincrement())
+  userId          String
+  workflowId      Int
+  params          Json?
+  result          Json?
+  status          RunStatus @default(PENDING)
+  progress        Int       @default(0)
+  progressMessage String?
+  errorMessage    String?
+  costCredits     Int
+  startedAt       DateTime?
+  finishedAt      DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  user     User     @relation(fields: [userId], references: [id])
+  workflow Workflow @relation(fields: [workflowId], references: [id])
+
+  @@index([userId, status])
+  @@index([workflowId, status])
+}
+
+model RechargeOrder {
+  id                    Int         @id @default(autoincrement())
+  userId                String
+  amount                Decimal     @db.Decimal(10, 2)
+  credits               Int
+  status                OrderStatus @default(PENDING)
+  stripeSessionId       String?     @unique
+  stripePaymentIntentId String?     @unique
+  createdAt             DateTime    @default(now())
+  updatedAt             DateTime    @updatedAt
+  user                  User        @relation(fields: [userId], references: [id])
+
+  @@index([userId, status])
+}
+
+model CreditLedger {
+  id           Int        @id @default(autoincrement())
+  userId       String
+  change       Int
+  balanceAfter Int
+  type         LedgerType
+  refId        String?
+  memo         String?
+  createdAt    DateTime   @default(now())
+  user         User       @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([userId, createdAt])
+  @@index([refId])
+  @@index([type])
+  @@index([type, refId])
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum WorkflowStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum RunStatus {
+  PENDING
+  RUNNING
+  SUCCEEDED
+  FAILED
+  CANCELED
+}
+
+enum LedgerType {
+  RECHARGE
+  CONSUME
+  REFUND
+  ADJUST
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}

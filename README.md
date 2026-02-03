@@ -22,6 +22,7 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 ## Project Docs
 
+- `docs/project-structure.md` - 项目目录结构
 - `docs/feature-plan.md` - 功能开发计划表
 - `docs/design-guidelines.md` - 项目设计指南
 - `docs/development-guide.md` - 开发指南
