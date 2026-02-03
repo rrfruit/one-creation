@@ -6,6 +6,20 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { DataPagination } from "@/components/ui/data-pagination";
+import { Search, Users } from "lucide-react";
 
 export default async function UsersPage({
   searchParams,
@@ -28,111 +42,139 @@ export default async function UsersPage({
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold">用户管理</h1>
-        <p className="text-muted-foreground">查看和管理所有用户</p>
+      {/* 页面标题 */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold tracking-tight">用户管理</h1>
+          <p className="text-muted-foreground">查看和管理所有用户</p>
+        </div>
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <Users className="h-4 w-4" />
+          <span>共 {total} 位用户</span>
+        </div>
       </div>
 
+      {/* 搜索栏 */}
+      <Card>
+        <CardContent className="pt-6">
+          <form className="flex gap-2">
+            <div className="relative flex-1 max-w-sm">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                name="search"
+                placeholder="搜索用户名或邮箱..."
+                defaultValue={search}
+                className="pl-9"
+              />
+            </div>
+            <Button type="submit" variant="secondary">
+              搜索
+            </Button>
+            {search && (
+              <Button variant="ghost" asChild>
+                <a href="/admin/users">清除</a>
+              </Button>
+            )}
+          </form>
+        </CardContent>
+      </Card>
+
+      {/* 用户表格 */}
       <Card>
         <CardHeader>
           <CardTitle>用户列表</CardTitle>
-          <CardDescription>共 {total} 位用户</CardDescription>
+          <CardDescription>
+            {search ? `搜索 "${search}" 的结果` : "所有注册用户"}
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left py-3 px-4 font-medium">用户</th>
-                  <th className="text-left py-3 px-4 font-medium">邮箱</th>
-                  <th className="text-left py-3 px-4 font-medium">角色</th>
-                  <th className="text-left py-3 px-4 font-medium">积分</th>
-                  <th className="text-left py-3 px-4 font-medium">状态</th>
-                  <th className="text-left py-3 px-4 font-medium">注册时间</th>
-                </tr>
-              </thead>
-              <tbody>
-                {users.map((user) => (
-                  <tr key={user.id} className="border-b hover:bg-muted/50">
-                    <td className="py-3 px-4">
-                      <div className="flex items-center gap-3">
-                        {user.imageUrl ? (
-                          <img
-                            src={user.imageUrl}
-                            alt=""
-                            className="w-8 h-8 rounded-full"
-                          />
-                        ) : (
-                          <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs">
-                            {user.nickname?.[0] || user.email?.[0] || "?"}
-                          </div>
-                        )}
-                        <span>{user.nickname || "-"}</span>
-                      </div>
-                    </td>
-                    <td className="py-3 px-4 text-muted-foreground">
-                      {user.email || "-"}
-                    </td>
-                    <td className="py-3 px-4">
-                      <span
-                        className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium ${
-                          user.role === "ADMIN"
-                            ? "bg-primary/10 text-primary"
-                            : "bg-muted text-muted-foreground"
-                        }`}
-                      >
-                        {user.role === "ADMIN" ? "管理员" : "用户"}
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[250px]">用户</TableHead>
+                <TableHead>邮箱</TableHead>
+                <TableHead>角色</TableHead>
+                <TableHead className="text-right">积分</TableHead>
+                <TableHead>状态</TableHead>
+                <TableHead>注册时间</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {users.map((user) => (
+                <TableRow key={user.id}>
+                  <TableCell>
+                    <div className="flex items-center gap-3">
+                      <Avatar>
+                        <AvatarImage src={user.imageUrl || undefined} />
+                        <AvatarFallback>
+                          {user.nickname?.[0] || user.email?.[0] || "?"}
+                        </AvatarFallback>
+                      </Avatar>
+                      <span className="font-medium">
+                        {user.nickname || "-"}
                       </span>
-                    </td>
-                    <td className="py-3 px-4">{user.credits}</td>
-                    <td className="py-3 px-4">
-                      <span
-                        className={`inline-flex px-2 py-0.5 rounded-full text-xs font-medium ${
-                          user.status === "ACTIVE"
-                            ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                            : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
-                        }`}
-                      >
-                        {user.status === "ACTIVE" ? "正常" : "禁用"}
-                      </span>
-                    </td>
-                    <td className="py-3 px-4 text-muted-foreground">
-                      {user.createdAt.toLocaleDateString("zh-CN")}
-                    </td>
-                  </tr>
-                ))}
-                {users.length === 0 && (
-                  <tr>
-                    <td
-                      colSpan={6}
-                      className="py-8 text-center text-muted-foreground"
+                    </div>
+                  </TableCell>
+                  <TableCell className="text-muted-foreground">
+                    {user.email || "-"}
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      variant={user.role === "ADMIN" ? "default" : "secondary"}
                     >
-                      暂无用户数据
-                    </td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
+                      {user.role === "ADMIN" ? "管理员" : "用户"}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="text-right font-medium">
+                    {user.credits.toLocaleString()}
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      variant={
+                        user.status === "ACTIVE" ? "outline" : "destructive"
+                      }
+                      className={
+                        user.status === "ACTIVE"
+                          ? "border-green-500 text-green-600 dark:text-green-400"
+                          : ""
+                      }
+                    >
+                      {user.status === "ACTIVE" ? "正常" : "禁用"}
+                    </Badge>
+                  </TableCell>
+                  <TableCell className="text-muted-foreground">
+                    {user.createdAt.toLocaleDateString("zh-CN", {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </TableCell>
+                </TableRow>
+              ))}
+              {users.length === 0 && (
+                <TableRow>
+                  <TableCell
+                    colSpan={6}
+                    className="h-32 text-center text-muted-foreground"
+                  >
+                    <div className="flex flex-col items-center gap-2">
+                      <Users className="h-8 w-8 opacity-50" />
+                      <span>暂无用户数据</span>
+                    </div>
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
 
           {/* 分页 */}
-          {totalPages > 1 && (
-            <div className="flex justify-center gap-2 mt-4">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-                <a
-                  key={p}
-                  href={`/users?page=${p}${search ? `&search=${search}` : ""}`}
-                  className={`px-3 py-1 rounded text-sm ${
-                    p === page
-                      ? "bg-primary text-primary-foreground"
-                      : "hover:bg-muted"
-                  }`}
-                >
-                  {p}
-                </a>
-              ))}
-            </div>
-          )}
+          <DataPagination
+            currentPage={page}
+            totalPages={totalPages}
+            totalItems={total}
+            pageSize={10}
+            className="mt-6 pt-4 border-t"
+          />
         </CardContent>
       </Card>
     </div>
