@@ -1,42 +1,47 @@
-import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
-import { isAdmin } from "@/lib/auth";
+import { AppSidebar } from "@/components/admin/app-sidebar";
 import {
-  SidebarProvider,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { Separator } from "@/components/ui/separator";
+import {
   SidebarInset,
+  SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { AdminSidebar } from "@/components/admin/admin-sidebar";
-import { AdminBreadcrumb } from "@/components/admin/admin-breadcrumb";
-import { Separator } from "@/components/ui/separator";
 
-export default async function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  // 检查管理员权限
-  const admin = await isAdmin();
-  if (!admin) {
-    redirect("/");
-  }
-
-  // 读取 sidebar 状态
-  const cookieStore = await cookies();
-  const defaultOpen = cookieStore.get("sidebar_state")?.value !== "false";
-
+export default function Page({ children }: { children: React.ReactNode }) {
   return (
-    <SidebarProvider defaultOpen={defaultOpen}>
-      <AdminSidebar />
+    <SidebarProvider>
+      <AppSidebar />
       <SidebarInset>
-        {/* 顶部栏 */}
-        <header className="flex h-14 shrink-0 items-center gap-2 border-b px-4">
-          <SidebarTrigger className="-ml-1" />
-          <Separator orientation="vertical" className="mr-2 h-4" />
-          <AdminBreadcrumb />
+        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+          <div className="flex items-center gap-2 px-4">
+            <SidebarTrigger className="-ml-1" />
+            <Separator
+              orientation="vertical"
+              className="mr-2 data-[orientation=vertical]:h-4"
+            />
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem className="hidden md:block">
+                  <BreadcrumbLink href="#">
+                    Building Your Application
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator className="hidden md:block" />
+                <BreadcrumbItem>
+                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          </div>
         </header>
-        {/* 主内容区 */}
-        <main className="flex-1 p-6">{children}</main>
+        <main className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</main>
       </SidebarInset>
     </SidebarProvider>
   );

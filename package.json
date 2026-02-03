@@ -17,6 +17,7 @@
     "@prisma/client": "^7.3.0",
     "@prisma/client-runtime-utils": "^7.3.0",
     "@radix-ui/react-slot": "^1.2.4",
+    "@tabler/icons-react": "^3.36.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.563.0",
