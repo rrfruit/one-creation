@@ -10,8 +10,8 @@ import {
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
-} from "@/components/ui/pagination";
-import { cn } from "@/lib/utils";
+} from "@/app/components/ui/pagination";
+import { cn } from "@/app/lib/utils";
 
 export interface DataPaginationProps {
   /** 当前页码 */

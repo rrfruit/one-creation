@@ -4,7 +4,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/app/components/ui/card";
 import { Users, Workflow, TrendingUp, Clock } from "lucide-react";
 
 export default function AdminDashboardPage() {

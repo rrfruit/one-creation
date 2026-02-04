@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/server/prisma";
 import type { Prisma } from "~/generated/prisma";
 
 export interface ListUsersParams {

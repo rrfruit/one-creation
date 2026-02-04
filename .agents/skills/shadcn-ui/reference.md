@@ -7,10 +7,11 @@ The library encompasses four major categories: composable UI components (termina
 ## Core Components
 
 ### Terminal Component
+
 Interactive terminal emulator with typing animations and command execution simulation for developer-focused interfaces.
 
 ```tsx
-import { Terminal } from "@/components/ui/terminal"
+import { Terminal } from "@/app/components/ui/terminal"
 
 export default function DemoTerminal() {
  return (
@@ -20,10 +21,11 @@ export default function DemoTerminal() {
 ```
 
 ### Dock Component
+
 macOS-style application dock with smooth magnification effects on hover, perfect for navigation menus.
 
 ```tsx
-import { Dock, DockIcon } from "@/components/ui/dock"
+import { Dock, DockIcon } from "@/app/components/ui/dock"
 import { Home, Settings, User, Mail } from "lucide-react"
 
 export default function AppDock() {
@@ -34,10 +36,11 @@ export default function AppDock() {
 ```
 
 ### Credit Card Component
+
 Interactive 3D credit card component with flip animations for payment forms and card displays.
 
 ```tsx
-import { CreditCard } from "@/components/ui/credit-card"
+import { CreditCard } from "@/app/components/ui/credit-card"
 import { useState } from "react"
 
 export default function PaymentForm() {
@@ -56,10 +59,11 @@ export default function PaymentForm() {
 ```
 
 ### Image Zoom Component
+
 Zoomable image component with smooth modal transitions for image galleries and product displays.
 
 ```tsx
-import { ImageZoom } from "@/components/ui/image-zoom"
+import { ImageZoom } from "@/app/components/ui/image-zoom"
 
 export default function ProductGallery() {
  return (
@@ -70,10 +74,11 @@ export default function ProductGallery() {
 ```
 
 ### QR Code Component
+
 Generate and display customizable QR codes with styling options for links, contact information, and authentication.
 
 ```tsx
-import { QRCode } from "@/components/ui/qr-code"
+import { QRCode } from "@/app/components/ui/qr-code"
 
 export default function ShareDialog() {
  const shareUrl = "https://shadcn.io"
@@ -89,10 +94,11 @@ Scan to visit shadcn.io
 ```
 
 ### Color Picker Component
+
 Advanced color selection component supporting multiple color formats (HEX, RGB, HSL) with preview.
 
 ```tsx
-import { ColorPicker } from "@/components/ui/color-picker"
+import { ColorPicker } from "@/app/components/ui/color-picker"
 import { useState } from "react"
 
 export default function ThemeCustomizer() {
@@ -110,10 +116,11 @@ Selected: {color}
 ## Chart Components
 
 ### Bar Chart Component
+
 Clean bar chart component for data comparison and categorical analysis using Recharts.
 
 ```tsx
-import { BarChart } from "@/components/ui/bar-chart"
+import { BarChart } from "@/app/components/ui/bar-chart"
 
 export default function SalesChart() {
 const data = [
@@ -134,10 +141,11 @@ yAxisWidth={60}
 ```
 
 ### Line Chart Component
+
 Smooth line chart for visualizing trends and time-series data with multiple data series support.
 
 ```tsx
-import { LineChart } from "@/components/ui/line-chart"
+import { LineChart } from "@/app/components/ui/line-chart"
 
 export default function MetricsChart() {
 const data = [
@@ -155,10 +163,11 @@ return (
 ```
 
 ### Pie Chart Component
+
 Donut chart component for displaying proportional data and percentage distributions.
 
 ```tsx
-import { PieChart } from "@/components/ui/pie-chart"
+import { PieChart } from "@/app/components/ui/pie-chart"
 
 export default function MarketShareChart() {
 const data = [
@@ -176,10 +185,11 @@ return (
 ```
 
 ### Area Chart Component
+
 Stacked area chart for visualizing volume changes over time with multiple data series.
 
 ```tsx
-import { AreaChart } from "@/components/ui/area-chart"
+import { AreaChart } from "@/app/components/ui/area-chart"
 
 export default function TrafficChart() {
 const data = [
@@ -197,10 +207,11 @@ return (
 ```
 
 ### Radar Chart Component
+
 Multi-axis chart for comparing multiple variables across different categories simultaneously.
 
 ```tsx
-import { RadarChart } from "@/components/ui/radar-chart"
+import { RadarChart } from "@/app/components/ui/radar-chart"
 
 export default function SkillsChart() {
 const data = [
@@ -218,10 +229,11 @@ return (
 ```
 
 ### Mixed Chart Component
+
 Combined bar and line chart for displaying multiple data types with different visualization methods.
 
 ```tsx
-import { MixedChart } from "@/components/ui/mixed-chart"
+import { MixedChart } from "@/app/components/ui/mixed-chart"
 
 export default function PerformanceChart() {
 const data = [
@@ -241,10 +253,11 @@ return (
 ## Animation Components
 
 ### Magnetic Effect Component
+
 Magnetic hover effect that smoothly follows cursor movement for interactive buttons and cards.
 
 ```tsx
-import { Magnetic } from "@/components/ui/magnetic"
+import { Magnetic } from "@/app/components/ui/magnetic"
 
 export default function InteractiveButton() {
 return (
@@ -256,10 +269,11 @@ Hover me
 ```
 
 ### Animated Cursor Component
+
 Custom animated cursor with interactive effects and particle trails for immersive experiences.
 
 ```tsx
-import { AnimatedCursor } from "@/components/ui/animated-cursor"
+import { AnimatedCursor } from "@/app/components/ui/animated-cursor"
 
 export default function Layout({ children }) {
 return (
@@ -272,10 +286,11 @@ return (
 ```
 
 ### Apple Hello Effect Component
+
 Recreation of Apple's iconic "hello" animation with multi-language text transitions.
 
 ```tsx
-import { AppleHello } from "@/components/ui/apple-hello"
+import { AppleHello } from "@/app/components/ui/apple-hello"
 
 export default function WelcomeScreen() {
 const greetings = [
@@ -293,10 +308,11 @@ return (
 ```
 
 ### Liquid Button Component
+
 Button with fluid liquid animation effect on hover for engaging call-to-action elements.
 
 ```tsx
-import { LiquidButton } from "@/components/ui/liquid-button"
+import { LiquidButton } from "@/app/components/ui/liquid-button"
 
 export default function CTASection() {
 return (
@@ -309,10 +325,11 @@ Get Started
 ```
 
 ### Rolling Text Component
+
 Text animation that creates a rolling effect with smooth character transitions.
 
 ```tsx
-import { RollingText } from "@/components/ui/rolling-text"
+import { RollingText } from "@/app/components/ui/rolling-text"
 
 export default function AnimatedHeading() {
 return (
@@ -322,10 +339,11 @@ return (
 ```
 
 ### Shimmering Text Component
+
 Text with animated shimmer effect for attention-grabbing headings and highlights.
 
 ```tsx
-import { ShimmeringText } from "@/components/ui/shimmering-text"
+import { ShimmeringText } from "@/app/components/ui/shimmering-text"
 
 export default function Hero() {
 return (
@@ -337,6 +355,7 @@ return (
 ## React Hooks
 
 ### useBoolean Hook
+
 Enhanced boolean state management with toggle, enable, and disable methods for cleaner component logic.
 
 ```tsx
@@ -374,6 +393,7 @@ Submit
 ```
 
 ### useCounter Hook
+
 Counter hook with increment, decrement, reset, and set functionality for numeric state management.
 
 ```tsx
@@ -397,6 +417,7 @@ Reset
 ```
 
 ### useLocalStorage Hook
+
 Persist state in browser localStorage with automatic serialization and deserialization.
 
 ```tsx
@@ -426,6 +447,7 @@ Enable Notifications
 ```
 
 ### useDebounceValue Hook
+
 Debounce values to prevent excessive updates and API calls during rapid user input.
 
 ```tsx
@@ -463,6 +485,7 @@ API calls: {apiCalls}
 ```
 
 ### useHover Hook
+
 Track hover state on elements with customizable enter and leave delays for tooltip and preview functionality.
 
 ```tsx
@@ -493,6 +516,7 @@ return (
 ```
 
 ### useCountdown Hook
+
 Countdown timer with play, pause, reset controls and completion callbacks for time-limited features.
 
 ```tsx
@@ -526,6 +550,7 @@ Status: {countdown.isComplete ? "Expired" : countdown.isRunning ? "Active" : "Pa
 ## Installation and Usage
 
 ### CLI Installation
+
 Install components directly into your project using the shadcn CLI for instant integration.
 
 ```bash
@@ -545,38 +570,39 @@ npx shadcn@latest add use-boolean use-counter use-local-storage
 ```
 
 ### Project Configuration
+
 Configure your project to work with shadcn.io components using TypeScript and Tailwind CSS.
 
 ```typescript
 // tailwind.config.ts
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config: Config = {
-darkMode: ["class"],
-content: [
-"./pages/**/*.{ts,tsx}",
-"./components/**/*.{ts,tsx}",
-"./app/**/*.{ts,tsx}",
-],
-theme: {
-extend: {
-colors: {
-border: "hsl(var(--border))",
-input: "hsl(var(--input))",
-ring: "hsl(var(--ring))",
-background: "hsl(var(--background))",
-foreground: "hsl(var(--foreground))",
-primary: {
-DEFAULT: "hsl(var(--primary))",
-foreground: "hsl(var(--primary-foreground))",
-},
-},
-},
-},
-plugins: [require("tailwindcss-animate")],
-}
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate")],
+};
 
-export default config
+export default config;
 ```
 
 ## Summary

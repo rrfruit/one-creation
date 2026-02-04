@@ -89,6 +89,7 @@ npx shadcn@latest init
 ```
 
 During setup, you'll configure:
+
 - TypeScript or JavaScript
 - Style (Default, New York, etc.)
 - Base color theme
@@ -171,7 +172,7 @@ npm install @radix-ui/react-slot
     ],
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["./src/components/*"],
+      "@/app/components/*": ["./src/components/*"],
       "@/lib/*": ["./src/lib/*"]
     }
   },
@@ -188,10 +189,10 @@ npm install @radix-ui/react-slot
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -260,7 +261,7 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
 ```
 
 ### CSS Variables (globals.css)
@@ -340,7 +341,7 @@ npx shadcn@latest add button
 Basic usage:
 
 ```tsx
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 
 export function ButtonDemo() {
   return <Button>Click me</Button>;
@@ -350,7 +351,7 @@ export function ButtonDemo() {
 Button variants:
 
 ```tsx
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 
 export function ButtonVariants() {
   return (
@@ -382,7 +383,7 @@ Button sizes:
 With loading state:
 
 ```tsx
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 import { Loader2 } from "lucide-react";
 
 export function ButtonLoading() {
@@ -408,7 +409,7 @@ npx shadcn@latest add input
 Basic input:
 
 ```tsx
-import { Input } from "@/components/ui/input";
+import { Input } from "@/app/components/ui/input";
 
 export function InputDemo() {
   return <Input type="email" placeholder="Email" />;
@@ -418,8 +419,8 @@ export function InputDemo() {
 Input with label:
 
 ```tsx
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Input } from "@/app/components/ui/input";
+import { Label } from "@/app/components/ui/label";
 
 export function InputWithLabel() {
   return (
@@ -434,14 +435,16 @@ export function InputWithLabel() {
 Input with button:
 
 ```tsx
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from "@/app/components/ui/button";
+import { Input } from "@/app/components/ui/input";
 
 export function InputWithButton() {
   return (
     <div className="flex w-full max-w-sm items-center gap-2">
       <Input type="email" placeholder="Email" />
-      <Button type="submit" variant="outline">Subscribe</Button>
+      <Button type="submit" variant="outline">
+        Subscribe
+      </Button>
     </div>
   );
 }
@@ -460,13 +463,13 @@ This installs React Hook Form, Zod, and form components.
 Complete form example:
 
 ```tsx
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/app/components/ui/button";
 import {
   Form,
   FormControl,
@@ -475,9 +478,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { toast } from "@/components/ui/use-toast"
+} from "@/app/components/ui/form";
+import { Input } from "@/app/components/ui/input";
+import { toast } from "@/app/components/ui/use-toast";
 
 const formSchema = z.object({
   username: z.string().min(2, {
@@ -486,7 +489,7 @@ const formSchema = z.object({
   email: z.string().email({
     message: "Please enter a valid email address.",
   }),
-})
+});
 
 export function ProfileForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -495,7 +498,7 @@ export function ProfileForm() {
       username: "",
       email: "",
     },
-  })
+  });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     toast({
@@ -505,7 +508,7 @@ export function ProfileForm() {
           <code className="text-white">{JSON.stringify(values, null, 2)}</code>
         </pre>
       ),
-    })
+    });
   }
 
   return (
@@ -527,7 +530,7 @@ export function ProfileForm() {
             </FormItem>
           )}
         />
-        
+
         <FormField
           control={form.control}
           name="email"
@@ -541,11 +544,11 @@ export function ProfileForm() {
             </FormItem>
           )}
         />
-        
+
         <Button type="submit">Submit</Button>
       </form>
     </Form>
-  )
+  );
 }
 ```
 
@@ -567,7 +570,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/app/components/ui/card";
 
 export function CardDemo() {
   return (
@@ -583,14 +586,14 @@ export function CardDemo() {
         <p>Card Footer</p>
       </CardFooter>
     </Card>
-  )
+  );
 }
 ```
 
 Card with form:
 
 ```tsx
-import { Button } from "@/components/ui/button"
+import { Button } from "@/app/components/ui/button";
 import {
   Card,
   CardContent,
@@ -598,9 +601,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/app/components/ui/card";
+import { Input } from "@/app/components/ui/input";
+import { Label } from "@/app/components/ui/label";
 
 export function CardWithForm() {
   return (
@@ -624,7 +627,7 @@ export function CardWithForm() {
         <Button>Deploy</Button>
       </CardFooter>
     </Card>
-  )
+  );
 }
 ```
 
@@ -639,7 +642,7 @@ npx shadcn@latest add dialog
 Basic dialog:
 
 ```tsx
-import { Button } from "@/components/ui/button"
+import { Button } from "@/app/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -648,7 +651,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/app/components/ui/dialog";
 
 export function DialogDemo() {
   return (
@@ -676,7 +679,7 @@ export function DialogDemo() {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
 ```
 
@@ -691,7 +694,7 @@ npx shadcn@latest add sheet
 Basic sheet:
 
 ```tsx
-import { Button } from "@/components/ui/button"
+import { Button } from "@/app/components/ui/button";
 import {
   Sheet,
   SheetContent,
@@ -699,7 +702,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet"
+} from "@/app/components/ui/sheet";
 
 export function SheetDemo() {
   return (
@@ -730,7 +733,7 @@ export function SheetDemo() {
         </div>
       </SheetContent>
     </Sheet>
-  )
+  );
 }
 ```
 
@@ -777,7 +780,7 @@ import {
   MenubarSubContent,
   MenubarSubTrigger,
   MenubarTrigger,
-} from "@/components/ui/menubar"
+} from "@/app/components/ui/menubar";
 
 export function MenubarDemo() {
   return (
@@ -819,7 +822,7 @@ export function MenubarDemo() {
         </MenubarContent>
       </MenubarMenu>
     </Menubar>
-  )
+  );
 }
 ```
 
@@ -840,7 +843,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from "@/app/components/ui/select";
 
 export function SelectDemo() {
   return (
@@ -854,7 +857,7 @@ export function SelectDemo() {
         <SelectItem value="orange">Orange</SelectItem>
       </SelectContent>
     </Select>
-  )
+  );
 }
 ```
 
@@ -896,7 +899,7 @@ npx shadcn@latest add toast
 Setup toast provider in root layout:
 
 ```tsx
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/app/components/ui/toaster";
 
 export default function RootLayout({ children }) {
   return (
@@ -906,18 +909,18 @@ export default function RootLayout({ children }) {
         <Toaster />
       </body>
     </html>
-  )
+  );
 }
 ```
 
 Using toast:
 
 ```tsx
-import { useToast } from "@/components/ui/use-toast"
-import { Button } from "@/components/ui/button"
+import { useToast } from "@/app/components/ui/use-toast";
+import { Button } from "@/app/components/ui/button";
 
 export function ToastDemo() {
-  const { toast } = useToast()
+  const { toast } = useToast();
 
   return (
     <Button
@@ -925,12 +928,12 @@ export function ToastDemo() {
         toast({
           title: "Scheduled: Catch up",
           description: "Friday, February 10, 2023 at 5:57 PM",
-        })
+        });
       }}
     >
       Show Toast
     </Button>
-  )
+  );
 }
 ```
 
@@ -941,21 +944,21 @@ Toast variants:
 toast({
   title: "Success",
   description: "Your changes have been saved.",
-})
+});
 
 // Error
 toast({
   variant: "destructive",
   title: "Error",
   description: "Something went wrong.",
-})
+});
 
 // With action
 toast({
   title: "Uh oh! Something went wrong.",
   description: "There was a problem with your request.",
   action: <ToastAction altText="Try again">Try again</ToastAction>,
-})
+});
 ```
 
 ### Table Component
@@ -977,12 +980,17 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
+} from "@/app/components/ui/table";
 
 const invoices = [
-  { invoice: "INV001", status: "Paid", method: "Credit Card", amount: "$250.00" },
+  {
+    invoice: "INV001",
+    status: "Paid",
+    method: "Credit Card",
+    amount: "$250.00",
+  },
   { invoice: "INV002", status: "Pending", method: "PayPal", amount: "$150.00" },
-]
+];
 
 export function TableDemo() {
   return (
@@ -1007,7 +1015,7 @@ export function TableDemo() {
         ))}
       </TableBody>
     </Table>
-  )
+  );
 }
 ```
 
@@ -1054,10 +1062,10 @@ Since you own the code, customize directly:
 
 ```tsx
 // components/ui/button.tsx
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors",
@@ -1065,7 +1073,8 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline: "border border-input bg-background hover:bg-accent",
         // Add custom variant
         custom: "bg-gradient-to-r from-purple-500 to-pink-500 text-white",
@@ -1083,29 +1092,29 @@ const buttonVariants = cva(
       size: "default",
     },
   }
-)
+);
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean
+  asChild?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button"
+    const Comp = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
       />
-    )
+    );
   }
-)
-Button.displayName = "Button"
+);
+Button.displayName = "Button";
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };
 ```
 
 ## Next.js Integration
@@ -1116,12 +1125,12 @@ For Next.js 13+ with App Router, ensure components use `"use client"` directive:
 
 ```tsx
 // src/components/ui/button.tsx
-"use client"
+"use client";
 
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "@/lib/utils";
 
 // ... rest of component
 ```
@@ -1132,13 +1141,13 @@ Add the Toaster to your root layout:
 
 ```tsx
 // app/layout.tsx
-import { Toaster } from "@/components/ui/toaster"
-import "./globals.css"
+import { Toaster } from "@/app/components/ui/toaster";
+import "./globals.css";
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -1147,7 +1156,7 @@ export default function RootLayout({
         <Toaster />
       </body>
     </html>
-  )
+  );
 }
 ```
 
@@ -1157,8 +1166,13 @@ When using shadcn/ui components in Server Components, wrap them in a Client Comp
 
 ```tsx
 // app/dashboard/page.tsx
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ButtonClient } from "@/components/ui/button-client"
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/app/components/ui/card";
+import { ButtonClient } from "@/app/components/ui/button-client";
 
 export default function DashboardPage() {
   return (
@@ -1172,18 +1186,18 @@ export default function DashboardPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
 ```
 
 ```tsx
 // src/components/ui/button-client.tsx
-"use client"
+"use client";
 
-import { Button } from "./button"
+import { Button } from "./button";
 
 export function ButtonClient(props: React.ComponentProps<typeof Button>) {
-  return <Button {...props} />
+  return <Button {...props} />;
 }
 ```
 
@@ -1193,36 +1207,33 @@ Create API routes for form submissions:
 
 ```tsx
 // app/api/contact/route.ts
-import { NextRequest, NextResponse } from "next/server"
-import { z } from "zod"
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
 
 const contactSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   message: z.string().min(10),
-})
+});
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json()
-    const validated = contactSchema.parse(body)
+    const body = await request.json();
+    const validated = contactSchema.parse(body);
 
     // Process form data
-    console.log("Form submission:", validated)
+    console.log("Form submission:", validated);
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ success: true });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return NextResponse.json(
-        { errors: error.errors },
-        { status: 400 }
-      )
+      return NextResponse.json({ errors: error.errors }, { status: 400 });
     }
 
     return NextResponse.json(
       { error: "Internal server error" },
       { status: 500 }
-    )
+    );
   }
 }
 ```
@@ -1233,12 +1244,12 @@ Using Next.js 14+ Server Actions:
 
 ```tsx
 // app/contact/page.tsx
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
-import { Button } from "@/components/ui/button"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { Button } from "@/app/components/ui/button";
 import {
   Form,
   FormControl,
@@ -1246,16 +1257,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { toast } from "@/components/ui/use-toast"
+} from "@/app/components/ui/form";
+import { Input } from "@/app/components/ui/input";
+import { Textarea } from "@/app/components/ui/textarea";
+import { toast } from "@/app/components/ui/use-toast";
 
 const formSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   message: z.string().min(10),
-})
+});
 
 async function onSubmit(values: z.infer<typeof formSchema>) {
   try {
@@ -1263,27 +1274,27 @@ async function onSubmit(values: z.infer<typeof formSchema>) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
-    })
+    });
 
-    if (!response.ok) throw new Error("Failed to submit")
+    if (!response.ok) throw new Error("Failed to submit");
 
     toast({
       title: "Success!",
       description: "Your message has been sent.",
-    })
+    });
   } catch (error) {
     toast({
       variant: "destructive",
       title: "Error",
       description: "Failed to send message. Please try again.",
-    })
+    });
   }
 }
 
 export default function ContactPage() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-  })
+  });
 
   return (
     <div className="container mx-auto max-w-2xl py-8">
@@ -1341,7 +1352,7 @@ export default function ContactPage() {
         </form>
       </Form>
     </div>
-  )
+  );
 }
 ```
 
@@ -1351,7 +1362,7 @@ Using shadcn/ui components in metadata:
 
 ```tsx
 // app/layout.tsx
-import { Metadata } from "next"
+import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
@@ -1359,16 +1370,21 @@ export const metadata: Metadata = {
     template: "%s | My App",
   },
   description: "Built with shadcn/ui and Next.js",
-}
+};
 
 // app/about/page.tsx
-import { Metadata } from "next"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Metadata } from "next";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/app/components/ui/card";
 
 export const metadata: Metadata = {
   title: "About Us",
   description: "Learn more about our company",
-}
+};
 
 export default function AboutPage() {
   return (
@@ -1382,7 +1398,7 @@ export default function AboutPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
 ```
 
@@ -1392,26 +1408,31 @@ Optimize fonts with next/font:
 
 ```tsx
 // app/layout.tsx
-import { Inter } from "next/font/google"
-import { Toaster } from "@/components/ui/toaster"
-import { cn } from "@/lib/utils"
-import "./globals.css"
+import { Inter } from "next/font/google";
+import { Toaster } from "@/app/components/ui/toaster";
+import { cn } from "@/lib/utils";
+import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("min-h-screen bg-background font-sans antialiased", inter.className)}>
+      <body
+        className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          inter.className
+        )}
+      >
         {children}
         <Toaster />
       </body>
     </html>
-  )
+  );
 }
 ```
 
@@ -1426,7 +1447,7 @@ const formSchema = z.object({
   bio: z.string().max(160).min(4),
   role: z.enum(["admin", "user", "guest"]),
   notifications: z.boolean().default(false),
-})
+});
 
 export function AdvancedForm() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -1438,10 +1459,10 @@ export function AdvancedForm() {
       role: "user",
       notifications: false,
     },
-  })
+  });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+    console.log(values);
   }
 
   return (
@@ -1545,7 +1566,7 @@ export function AdvancedForm() {
         <Button type="submit">Submit</Button>
       </form>
     </Form>
-  )
+  );
 }
 ```
 
@@ -1599,7 +1620,9 @@ export function AdvancedForm() {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full">Login</Button>
+        <Button type="submit" className="w-full">
+          Login
+        </Button>
       </form>
     </Form>
   </CardContent>

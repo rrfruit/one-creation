@@ -1,11 +1,11 @@
-import { UserService } from "@/services/user.service";
+import { UserService } from "@/server/services/user.service";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/app/components/ui/card";
 import {
   Table,
   TableBody,
@@ -13,12 +13,16 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { DataPagination } from "@/components/ui/data-pagination";
+} from "@/app/components/ui/table";
+import { Badge } from "@/app/components/ui/badge";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/app/components/ui/avatar";
+import { Input } from "@/app/components/ui/input";
+import { Button } from "@/app/components/ui/button";
+import { DataPagination } from "@/app/components/ui/data-pagination";
 import { Search, Users } from "lucide-react";
 
 export default async function UsersPage({

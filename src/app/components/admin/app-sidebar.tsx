@@ -9,16 +9,16 @@ import {
   IconFlower,
 } from "@tabler/icons-react";
 
-import { NavMain } from "@/components/admin/nav-main";
-import { NavUser } from "@/components/admin/nav-user";
-import { TeamSwitcher } from "@/components/admin/team-switcher";
+import { NavMain } from "@/app/components/admin/nav-main";
+import { NavUser } from "@/app/components/admin/nav-user";
+import { TeamSwitcher } from "@/app/components/admin/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar";
+} from "@/app/components/ui/sidebar";
 
 // This is sample data.
 const data = {
@@ -34,29 +34,30 @@ const data = {
       plan: "Enterprise",
     },
   ],
-  navMain: [
-    {
-      title: "控制面板",
-      url: "/admin",
-      icon: IconDashboard,
-    },
-    {
-      title: "用户管理",
-      url: "/admin/users",
-      icon: IconUsers,
-    },
-    {
-      title: "工作流管理",
-      url: "/admin/workflows",
-      icon: IconFlower,
-    },
-    {
-      title: "系统设置",
-      url: "/admin/settings",
-      icon: IconSettings2,
-    },
-  ],
 };
+
+export const adminNavItems = [
+  {
+    title: "控制面板",
+    url: "/admin",
+    icon: IconDashboard,
+  },
+  {
+    title: "用户管理",
+    url: "/admin/users",
+    icon: IconUsers,
+  },
+  {
+    title: "工作流管理",
+    url: "/admin/workflows",
+    icon: IconFlower,
+  },
+  {
+    title: "系统设置",
+    url: "/admin/settings",
+    icon: IconSettings2,
+  },
+];
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -65,7 +66,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent className="pt-0!">
-        <NavMain items={data.navMain} />
+        <NavMain items={adminNavItems} />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

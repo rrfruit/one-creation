@@ -163,7 +163,7 @@ TypeScript 类型定义，全局共享的接口和类型。
 项目配置了 `@/` 别名指向 `src/` 目录：
 
 ```typescript
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 import { prisma } from "@/lib/prisma";
 import { success, error } from "@/lib/api-response";
 ```

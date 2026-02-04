@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
-import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { Button } from "@/app/components/ui/button";
+import { ThemeToggle } from "@/app/components/layout/ThemeToggle";
 
 export default function Header() {
   return (
